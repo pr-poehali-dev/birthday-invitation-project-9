@@ -53,11 +53,19 @@ function RansomText({ text, startIndex = 0 }: { text: string; startIndex?: numbe
 
 export default function Index() {
   const [visible, setVisible] = useState(false);
+  const [confirmed, setConfirmed] = useState(false);
+  const [showBoom, setShowBoom] = useState(false);
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 100);
     return () => clearTimeout(t);
   }, []);
+
+  const handleConfirm = () => {
+    setConfirmed(true);
+    setShowBoom(true);
+    setTimeout(() => setShowBoom(false), 3000);
+  };
 
   const card = (delay: string) => ({
     background: "rgba(255,255,255,0.88)",
