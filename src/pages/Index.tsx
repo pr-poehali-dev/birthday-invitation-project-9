@@ -111,13 +111,10 @@ export default function Index() {
     <div
       className="min-h-screen font-nunito relative overflow-x-hidden"
       style={{
-        background: "#0f0c29",
-        backgroundImage: `
-          radial-gradient(ellipse at 20% 20%, rgba(155, 93, 229, 0.45) 0%, transparent 50%),
-          radial-gradient(ellipse at 80% 10%, rgba(255, 107, 157, 0.35) 0%, transparent 45%),
-          radial-gradient(ellipse at 60% 80%, rgba(0, 212, 255, 0.3) 0%, transparent 50%),
-          radial-gradient(ellipse at 10% 70%, rgba(255, 140, 66, 0.25) 0%, transparent 40%)
-        `,
+        backgroundImage: `url(https://cdn.poehali.dev/projects/7e142d08-c8a0-4c74-b10d-4b2097a9ab24/bucket/e2509c33-6553-4894-97af-d7a6f773fc58.jpg)`,
+        backgroundSize: "cover",
+        backgroundPosition: "center top",
+        backgroundAttachment: "fixed",
       }}
     >
       <Confetti />
@@ -145,12 +142,12 @@ export default function Index() {
         >
           <div className="text-6xl mb-2 inline-block" style={{ animation: "wiggle 1s ease-in-out infinite" }}>🎉</div>
           <h1
-            className="font-pacifico text-white drop-shadow-lg"
-            style={{ fontSize: "clamp(2.5rem, 8vw, 5rem)", textShadow: "3px 3px 0px rgba(0,0,0,0.15)" }}
+            className="font-pacifico drop-shadow-lg"
+            style={{ fontSize: "clamp(2.5rem, 8vw, 5rem)", color: "#FF6B9D", textShadow: "2px 2px 0px rgba(255,255,255,0.9), 4px 4px 0px rgba(155,93,229,0.3)" }}
           >
             Вы приглашены!
           </h1>
-          <p className="text-white/90 font-nunito font-bold text-xl mt-2" style={{ textShadow: "1px 1px 4px rgba(0,0,0,0.2)" }}>
+          <p className="font-nunito font-bold text-xl mt-2" style={{ color: "#9B5DE5", textShadow: "1px 1px 0px rgba(255,255,255,0.8)" }}>
             Приходите, будет весело! 🥳
           </p>
         </div>
@@ -275,7 +272,7 @@ export default function Index() {
             transition: "opacity 0.8s ease 0.7s",
           }}
         >
-          <p className="text-white/90 font-semibold text-lg" style={{ textShadow: "1px 1px 4px rgba(0,0,0,0.2)" }}>
+          <p className="font-semibold text-lg" style={{ color: "#9B5DE5" }}>
             Ждём вас с нетерпением! 🎈🎈🎈
           </p>
         </div>
