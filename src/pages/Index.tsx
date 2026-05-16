@@ -67,7 +67,10 @@ export default function Index() {
     <div
       className="min-h-screen font-nunito relative overflow-x-hidden"
       style={{
-        background: "#f5ede3",
+        backgroundImage: `url(https://cdn.poehali.dev/projects/7e142d08-c8a0-4c74-b10d-4b2097a9ab24/bucket/fedb398c-4440-439a-978c-34ef7f905683.jpg)`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
       }}
     >
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-start px-4 pt-48 pb-12 gap-6">
@@ -86,7 +89,7 @@ export default function Index() {
             <br />
             <RansomText text="день рождения" />
           </h1>
-          <p className="font-nunito font-extrabold text-2xl mt-3" style={{ color: "#1a1a1a" }}>
+          <p className="font-nunito font-extrabold text-2xl mt-3" style={{ color: "#fff", textShadow: "1px 1px 6px rgba(0,0,0,0.6)" }}>
             Я тебя жду ❤️
           </p>
         </div>
