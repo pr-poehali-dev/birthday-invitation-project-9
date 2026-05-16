@@ -39,17 +39,17 @@ export default function Index() {
           }}
         >
           <h1
-            className="font-pacifico"
+            className="font-nunito font-black"
             style={{
-              fontSize: "clamp(2.2rem, 7vw, 4.5rem)",
-              color: "#c0536a",
-              textShadow: "2px 2px 0px rgba(255,255,255,0.95)",
+              fontSize: "clamp(2rem, 6.5vw, 4rem)",
+              color: "#1a1a1a",
               lineHeight: 1.2,
+              letterSpacing: "-0.02em",
             }}
           >
             Приглашаю тебя на<br />день рождения
           </h1>
-          <p className="font-bold text-2xl mt-3" style={{ color: "#b07080" }}>
+          <p className="font-nunito font-extrabold text-2xl mt-3" style={{ color: "#1a1a1a" }}>
             Я тебя жду ❤️
           </p>
         </div>
