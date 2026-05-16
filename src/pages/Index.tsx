@@ -1,6 +1,52 @@
 import { useEffect, useState } from "react";
 import Icon from "@/components/ui/icon";
 
+const RANSOM_COLORS = [
+  { bg: "#e8e8e8", color: "#1a1a1a" },
+  { bg: "#FF6B9D", color: "#fff" },
+  { bg: "#9B5DE5", color: "#fff" },
+  { bg: "#FFD93D", color: "#1a1a1a" },
+  { bg: "#1a1a1a", color: "#fff" },
+  { bg: "#00D4FF", color: "#1a1a1a" },
+  { bg: "#FF8C42", color: "#fff" },
+  { bg: "#6BCB77", color: "#fff" },
+  { bg: "#c0392b", color: "#fff" },
+  { bg: "#2980b9", color: "#fff" },
+  { bg: "#f5f5f5", color: "#c0392b" },
+  { bg: "#8e44ad", color: "#fff" },
+];
+
+function RansomText({ text }: { text: string }) {
+  return (
+    <span className="inline-flex flex-wrap gap-1 justify-center">
+      {text.split("").map((char, i) => {
+        if (char === " ") return <span key={i} className="w-3" />;
+        const style = RANSOM_COLORS[i % RANSOM_COLORS.length];
+        const rotate = (i % 3 === 0) ? -3 : (i % 3 === 1) ? 2 : -1;
+        return (
+          <span
+            key={i}
+            className="font-black inline-flex items-center justify-center px-1"
+            style={{
+              background: style.bg,
+              color: style.color,
+              fontSize: "clamp(1.6rem, 5.5vw, 3.2rem)",
+              lineHeight: 1,
+              padding: "2px 5px",
+              transform: `rotate(${rotate}deg)`,
+              display: "inline-block",
+              fontFamily: "'Nunito', sans-serif",
+              boxShadow: "2px 2px 0px rgba(0,0,0,0.15)",
+            }}
+          >
+            {char}
+          </span>
+        );
+      })}
+    </span>
+  );
+}
+
 export default function Index() {
   const [visible, setVisible] = useState(false);
 
@@ -35,16 +81,10 @@ export default function Index() {
             transition: "all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)",
           }}
         >
-          <h1
-            className="font-nunito font-black"
-            style={{
-              fontSize: "clamp(2rem, 6.5vw, 4rem)",
-              color: "#1a1a1a",
-              lineHeight: 1.2,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Приглашаю тебя на<br />день рождения
+          <h1 className="font-nunito font-black leading-tight">
+            <RansomText text="Приглашаю тебя на" />
+            <br />
+            <RansomText text="день рождения" />
           </h1>
           <p className="font-nunito font-extrabold text-2xl mt-3" style={{ color: "#1a1a1a" }}>
             Я тебя жду ❤️
