@@ -111,7 +111,13 @@ export default function Index() {
     <div
       className="min-h-screen font-nunito relative overflow-x-hidden"
       style={{
-        background: "linear-gradient(135deg, #FF6B9D 0%, #9B5DE5 35%, #00D4FF 70%, #FFD93D 100%)",
+        background: "#0f0c29",
+        backgroundImage: `
+          radial-gradient(ellipse at 20% 20%, rgba(155, 93, 229, 0.45) 0%, transparent 50%),
+          radial-gradient(ellipse at 80% 10%, rgba(255, 107, 157, 0.35) 0%, transparent 45%),
+          radial-gradient(ellipse at 60% 80%, rgba(0, 212, 255, 0.3) 0%, transparent 50%),
+          radial-gradient(ellipse at 10% 70%, rgba(255, 140, 66, 0.25) 0%, transparent 40%)
+        `,
       }}
     >
       <Confetti />
@@ -177,7 +183,7 @@ export default function Index() {
                 </p>
                 <p className="text-3xl font-pacifico" style={{ color: "#333" }}>6 июня</p>
                 <p className="text-2xl font-extrabold" style={{ color: "#9B5DE5" }}>в 16:00 🕓</p>
-                <p className="text-sm text-gray-500 mt-1 font-semibold">Пятница — лучший день для праздника!</p>
+                <p className="text-sm text-gray-500 mt-1 font-semibold">Суббота — лучший день для праздника!</p>
               </div>
             </div>
           </div>
