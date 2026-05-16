@@ -212,10 +212,9 @@ export default function Index() {
                 <p className="text-xs font-extrabold uppercase tracking-widest mb-1" style={{ color: "#FF6B9D" }}>
                   Место проведения
                 </p>
-                <p className="text-xl font-extrabold" style={{ color: "#333" }}>Деревня Чандрово</p>
-                <p className="text-xl font-bold" style={{ color: "#9B5DE5" }}>ул. Садовая, д. 35</p>
+                <p className="text-xl font-extrabold" style={{ color: "#333" }}>2-я Чандровская улица, 35</p>
                 <a
-                  href="https://yandex.ru/maps/?text=деревня+Чандрово+улица+Садовая+35"
+                  href="https://yandex.ru/maps/?text=2-я+Чандровская+улица+35"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 mt-3 px-4 py-2 rounded-xl font-bold text-sm text-white transition-transform hover:scale-105 active:scale-95"
