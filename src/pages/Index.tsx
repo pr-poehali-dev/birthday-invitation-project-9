@@ -227,7 +227,7 @@ export default function Index() {
             </div>
           </div>
 
-          {/* Contacts */}
+          {/* Reminder */}
           <div
             className="rounded-3xl p-6 shadow-2xl relative overflow-hidden"
             style={{
@@ -236,46 +236,30 @@ export default function Index() {
               opacity: visible ? 1 : 0,
               transform: visible ? "translateY(0) scale(1)" : "translateY(50px) scale(0.9)",
               transition: "all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.45s",
-              border: "3px solid #9B5DE5",
+              border: "3px solid #6BCB77",
             }}
           >
-            <div className="absolute -top-3 -right-3 text-4xl" style={{ animation: "balloon-float 3s ease-in-out infinite" }}>🎊</div>
+            <div className="absolute -top-3 -right-3 text-4xl" style={{ animation: "balloon-float 3s ease-in-out infinite" }}>🌊</div>
             <div className="flex items-start gap-4">
               <div
                 className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0"
-                style={{ background: "linear-gradient(135deg, #9B5DE5, #00D4FF)" }}
+                style={{ background: "linear-gradient(135deg, #6BCB77, #00D4FF)" }}
               >
-                💬
+                🎒
               </div>
               <div className="w-full">
-                <p className="text-xs font-extrabold uppercase tracking-widest mb-3" style={{ color: "#9B5DE5" }}>
-                  Связь с организатором
+                <p className="text-xs font-extrabold uppercase tracking-widest mb-3" style={{ color: "#6BCB77" }}>
+                  Напоминание
                 </p>
-                <div className="flex flex-col gap-2">
-                  <a
-                    href="tel:+79001234567"
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-white transition-transform hover:scale-105 active:scale-95"
-                    style={{ background: "linear-gradient(135deg, #6BCB77, #00D4FF)" }}
-                  >
-                    <Icon name="Phone" size={18} />
-                    <span>Позвонить</span>
-                  </a>
-                  <a
-                    href="https://t.me/username"
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-white transition-transform hover:scale-105 active:scale-95"
-                    style={{ background: "linear-gradient(135deg, #00D4FF, #9B5DE5)" }}
-                  >
-                    <Icon name="MessageCircle" size={18} />
-                    <span>Написать в Telegram</span>
-                  </a>
-                  <a
-                    href="https://wa.me/79001234567"
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-white transition-transform hover:scale-105 active:scale-95"
-                    style={{ background: "linear-gradient(135deg, #6BCB77, #FFD93D)" }}
-                  >
-                    <Icon name="MessageSquare" size={18} />
-                    <span>Написать в WhatsApp</span>
-                  </a>
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-3 px-4 py-3 rounded-xl font-bold" style={{ background: "rgba(0,212,255,0.1)", color: "#0099bb" }}>
+                    <span className="text-2xl">👙</span>
+                    <span className="text-base">Не забудь взять купальник!</span>
+                  </div>
+                  <div className="flex items-center gap-3 px-4 py-3 rounded-xl font-bold" style={{ background: "rgba(107,203,119,0.1)", color: "#3a9a47" }}>
+                    <span className="text-2xl">😄</span>
+                    <span className="text-base">И хорошее настроение!</span>
+                  </div>
                 </div>
               </div>
             </div>
