@@ -89,9 +89,9 @@ export default function Index() {
           }}
         >
           <h1 className="font-nunito font-black leading-tight">
-            <RansomText text="Приглашаю тебя на" />
+            <RansomText text="Приглашаю тебя на" startIndex={0} />
             <br />
-            <RansomText text="день рождения" />
+            <RansomText text="день рождения" startIndex={18} />
           </h1>
           <p className="font-nunito font-extrabold text-2xl mt-3" style={{ color: "#fff", textShadow: "1px 1px 6px rgba(0,0,0,0.6)" }}>
             Я тебя жду ❤️
