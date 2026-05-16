@@ -16,17 +16,18 @@ const RANSOM_COLORS = [
   { bg: "#8e44ad", color: "#fff" },
 ];
 
-function RansomText({ text }: { text: string }) {
+function RansomText({ text, startIndex = 0 }: { text: string; startIndex?: number }) {
   return (
     <span className="inline-flex flex-wrap gap-1 justify-center">
       {text.split("").map((char, i) => {
         if (char === " ") return <span key={i} className="w-3" />;
-        const style = RANSOM_COLORS[i % RANSOM_COLORS.length];
-        const rotate = (i % 3 === 0) ? -3 : (i % 3 === 1) ? 2 : -1;
+        const globalIndex = startIndex + i;
+        const style = RANSOM_COLORS[globalIndex % RANSOM_COLORS.length];
+        const rotate = (globalIndex % 3 === 0) ? -3 : (globalIndex % 3 === 1) ? 2 : -1;
+        const delay = `${globalIndex * 0.07}s`;
         return (
           <span
             key={i}
-            className="font-black inline-flex items-center justify-center px-1"
             style={{
               background: style.bg,
               color: style.color,
@@ -36,7 +37,10 @@ function RansomText({ text }: { text: string }) {
               transform: `rotate(${rotate}deg)`,
               display: "inline-block",
               fontFamily: "'Nunito', sans-serif",
+              fontWeight: 900,
               boxShadow: "2px 2px 0px rgba(0,0,0,0.15)",
+              opacity: 0,
+              animation: `ransom-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) ${delay} forwards`,
             }}
           >
             {char}
