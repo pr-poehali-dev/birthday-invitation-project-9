@@ -1,104 +1,6 @@
 import { useEffect, useState } from "react";
 import Icon from "@/components/ui/icon";
 
-const CONFETTI_COLORS = [
-  "#FF6B9D", "#FFD93D", "#9B5DE5", "#00D4FF", "#FF8C42", "#6BCB77",
-  "#FF4757", "#FFA502", "#2ED573", "#1E90FF", "#FF6348", "#ECCC68",
-];
-
-const CONFETTI_SHAPES = ["circle", "rect", "triangle"];
-
-interface ConfettiPiece {
-  id: number;
-  x: number;
-  color: string;
-  shape: string;
-  size: number;
-  duration: number;
-  delay: number;
-  rotation: number;
-}
-
-function Confetti() {
-  const [pieces, setPieces] = useState<ConfettiPiece[]>([]);
-
-  useEffect(() => {
-    const generated: ConfettiPiece[] = Array.from({ length: 60 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
-      shape: CONFETTI_SHAPES[Math.floor(Math.random() * CONFETTI_SHAPES.length)],
-      size: Math.random() * 10 + 6,
-      duration: Math.random() * 4 + 4,
-      delay: Math.random() * 6,
-      rotation: Math.random() * 360,
-    }));
-    setPieces(generated);
-  }, []);
-
-  return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-      {pieces.map((p) => (
-        <div
-          key={p.id}
-          className="absolute top-0"
-          style={{
-            left: `${p.x}%`,
-            animation: `confetti-fall ${p.duration}s ${p.delay}s linear infinite`,
-          }}
-        >
-          {p.shape === "circle" && (
-            <div
-              style={{
-                width: p.size,
-                height: p.size,
-                backgroundColor: p.color,
-                borderRadius: "50%",
-                transform: `rotate(${p.rotation}deg)`,
-              }}
-            />
-          )}
-          {p.shape === "rect" && (
-            <div
-              style={{
-                width: p.size,
-                height: p.size * 0.6,
-                backgroundColor: p.color,
-                transform: `rotate(${p.rotation}deg)`,
-              }}
-            />
-          )}
-          {p.shape === "triangle" && (
-            <div
-              style={{
-                width: 0,
-                height: 0,
-                borderLeft: `${p.size / 2}px solid transparent`,
-                borderRight: `${p.size / 2}px solid transparent`,
-                borderBottom: `${p.size}px solid ${p.color}`,
-                transform: `rotate(${p.rotation}deg)`,
-              }}
-            />
-          )}
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function Balloon({ x, delay, emoji }: { x: string; delay: string; emoji: string }) {
-  return (
-    <div
-      className="absolute bottom-0 select-none pointer-events-none"
-      style={{ left: x, animation: `balloon-float 3.5s ${delay} ease-in-out infinite` }}
-    >
-      <div className="text-6xl md:text-7xl">
-        {emoji}
-      </div>
-    </div>
-  );
-}
-
 export default function Index() {
   const [visible, setVisible] = useState(false);
 
@@ -107,29 +9,25 @@ export default function Index() {
     return () => clearTimeout(t);
   }, []);
 
+  const card = (delay: string) => ({
+    background: "rgba(255,255,255,0.88)",
+    backdropFilter: "blur(24px)",
+    opacity: visible ? 1 : 0,
+    transform: visible ? "translateY(0) scale(1)" : "translateY(50px) scale(0.9)",
+    transition: `all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) ${delay}`,
+  });
+
   return (
     <div
       className="min-h-screen font-nunito relative overflow-x-hidden"
       style={{
-        backgroundImage: `url(https://cdn.poehali.dev/projects/7e142d08-c8a0-4c74-b10d-4b2097a9ab24/bucket/e2509c33-6553-4894-97af-d7a6f773fc58.jpg)`,
+        backgroundImage: `url(https://cdn.poehali.dev/projects/7e142d08-c8a0-4c74-b10d-4b2097a9ab24/bucket/0ad222c2-b598-4074-9b31-4063533aa8b9.jpg)`,
         backgroundSize: "cover",
         backgroundPosition: "center top",
         backgroundAttachment: "fixed",
       }}
     >
-      <Confetti />
-
-      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <Balloon x="3%" delay="0s" emoji="🎈" />
-        <Balloon x="88%" delay="0.8s" emoji="🎀" />
-        <Balloon x="75%" delay="1.5s" emoji="🎈" />
-        <Balloon x="15%" delay="2s" emoji="🎉" />
-        <Balloon x="50%" delay="0.4s" emoji="🎊" />
-        <Balloon x="92%" delay="1.2s" emoji="🎈" />
-        <Balloon x="30%" delay="2.5s" emoji="⭐" />
-      </div>
-
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-start px-4 py-12 gap-6">
+      <div className="relative z-10 min-h-screen flex flex-col items-center justify-start px-4 pt-48 pb-12 gap-6">
 
         {/* Hero */}
         <div
@@ -140,44 +38,34 @@ export default function Index() {
             transition: "all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)",
           }}
         >
-          <div className="text-6xl mb-2 inline-block" style={{ animation: "wiggle 1s ease-in-out infinite" }}>🎉</div>
           <h1
-            className="font-pacifico drop-shadow-lg"
-            style={{ fontSize: "clamp(2.5rem, 8vw, 5rem)", color: "#FF6B9D", textShadow: "2px 2px 0px rgba(255,255,255,0.9), 4px 4px 0px rgba(155,93,229,0.3)" }}
+            className="font-pacifico"
+            style={{
+              fontSize: "clamp(2.2rem, 7vw, 4.5rem)",
+              color: "#c0536a",
+              textShadow: "2px 2px 0px rgba(255,255,255,0.95)",
+              lineHeight: 1.2,
+            }}
           >
-            Вы приглашены!
+            Приглашаю тебя на<br />день рождения
           </h1>
-          <p className="font-nunito font-bold text-xl mt-2" style={{ color: "#9B5DE5", textShadow: "1px 1px 0px rgba(255,255,255,0.8)" }}>
-            Приходите, будет весело! 🥳
+          <p className="font-bold text-2xl mt-3" style={{ color: "#b07080" }}>
+            Я тебя жду ❤️
           </p>
         </div>
 
         <div className="w-full max-w-lg flex flex-col gap-5 mt-2">
 
           {/* Date & Time */}
-          <div
-            className="rounded-3xl p-6 shadow-2xl relative overflow-hidden"
-            style={{
-              background: "rgba(255,255,255,0.93)",
-              backdropFilter: "blur(20px)",
-              opacity: visible ? 1 : 0,
-              transform: visible ? "translateY(0) scale(1)" : "translateY(50px) scale(0.9)",
-              transition: "all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s",
-              border: "3px solid #FFD93D",
-            }}
-          >
+          <div className="rounded-3xl p-6 shadow-2xl relative overflow-hidden" style={{ ...card("0.15s"), border: "3px solid #FFD93D" }}>
             <div className="absolute -top-3 -right-3 text-4xl" style={{ animation: "star-spin 4s linear infinite" }}>⭐</div>
             <div className="flex items-start gap-4">
-              <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0"
-                style={{ background: "linear-gradient(135deg, #FFD93D, #FF8C42)" }}
-              >
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0"
+                style={{ background: "linear-gradient(135deg, #FFD93D, #FF8C42)" }}>
                 📅
               </div>
               <div>
-                <p className="text-xs font-extrabold uppercase tracking-widest mb-1" style={{ color: "#FF8C42" }}>
-                  Дата и время
-                </p>
+                <p className="text-xs font-extrabold uppercase tracking-widest mb-1" style={{ color: "#FF8C42" }}>Дата и время</p>
                 <p className="text-3xl font-pacifico" style={{ color: "#333" }}>6 июня</p>
                 <p className="text-2xl font-extrabold" style={{ color: "#9B5DE5" }}>в 16:00 🕓</p>
                 <p className="text-sm text-gray-500 mt-1 font-semibold">Суббота — лучший день для праздника!</p>
@@ -186,29 +74,15 @@ export default function Index() {
           </div>
 
           {/* Address */}
-          <div
-            className="rounded-3xl p-6 shadow-2xl relative overflow-hidden"
-            style={{
-              background: "rgba(255,255,255,0.93)",
-              backdropFilter: "blur(20px)",
-              opacity: visible ? 1 : 0,
-              transform: visible ? "translateY(0) scale(1)" : "translateY(50px) scale(0.9)",
-              transition: "all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s",
-              border: "3px solid #FF6B9D",
-            }}
-          >
+          <div className="rounded-3xl p-6 shadow-2xl relative overflow-hidden" style={{ ...card("0.3s"), border: "3px solid #FF6B9D" }}>
             <div className="absolute -top-3 -right-3 text-4xl">🎀</div>
             <div className="flex items-start gap-4">
-              <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0"
-                style={{ background: "linear-gradient(135deg, #FF6B9D, #9B5DE5)" }}
-              >
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0"
+                style={{ background: "linear-gradient(135deg, #FF6B9D, #9B5DE5)" }}>
                 📍
               </div>
               <div>
-                <p className="text-xs font-extrabold uppercase tracking-widest mb-1" style={{ color: "#FF6B9D" }}>
-                  Место проведения
-                </p>
+                <p className="text-xs font-extrabold uppercase tracking-widest mb-1" style={{ color: "#FF6B9D" }}>Место проведения</p>
                 <p className="text-xl font-extrabold" style={{ color: "#333" }}>2-я Чандровская улица, 35</p>
                 <a
                   href="https://yandex.ru/maps/?text=2-я+Чандровская+улица+35"
@@ -225,56 +99,37 @@ export default function Index() {
           </div>
 
           {/* Reminder */}
-          <div
-            className="rounded-3xl p-6 shadow-2xl relative overflow-hidden"
-            style={{
-              background: "rgba(255,255,255,0.93)",
-              backdropFilter: "blur(20px)",
-              opacity: visible ? 1 : 0,
-              transform: visible ? "translateY(0) scale(1)" : "translateY(50px) scale(0.9)",
-              transition: "all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.45s",
-              border: "3px solid #6BCB77",
-            }}
-          >
+          <div className="rounded-3xl p-6 shadow-2xl relative overflow-hidden" style={{ ...card("0.45s"), border: "3px solid #6BCB77" }}>
             <div className="absolute -top-3 -right-3 text-4xl" style={{ animation: "balloon-float 3s ease-in-out infinite" }}>🌊</div>
             <div className="flex items-start gap-4">
-              <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0"
-                style={{ background: "linear-gradient(135deg, #6BCB77, #00D4FF)" }}
-              >
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0"
+                style={{ background: "linear-gradient(135deg, #6BCB77, #00D4FF)" }}>
                 🎒
               </div>
               <div className="w-full">
-                <p className="text-xs font-extrabold uppercase tracking-widest mb-3" style={{ color: "#6BCB77" }}>
-                  Напоминание
-                </p>
-                <div className="flex flex-col gap-3">
+                <p className="text-xs font-extrabold uppercase tracking-widest mb-3" style={{ color: "#6BCB77" }}>Напоминание</p>
+                <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-3 px-4 py-3 rounded-xl font-bold" style={{ background: "rgba(0,212,255,0.1)", color: "#0099bb" }}>
                     <span className="text-2xl">👙</span>
-                    <span className="text-base">Не забудь взять купальник!</span>
+                    <span className="text-base">Возьми купальник!</span>
+                  </div>
+                  <div className="flex items-center gap-3 px-4 py-3 rounded-xl font-bold" style={{ background: "rgba(255,140,66,0.1)", color: "#c05a00" }}>
+                    <span className="text-2xl">🧖</span>
+                    <span className="text-base">Будет бассейн и баня</span>
                   </div>
                   <div className="flex items-center gap-3 px-4 py-3 rounded-xl font-bold" style={{ background: "rgba(107,203,119,0.1)", color: "#3a9a47" }}>
                     <span className="text-2xl">😄</span>
                     <span className="text-base">И хорошее настроение!</span>
+                  </div>
+                  <div className="flex items-center gap-3 px-4 py-3 rounded-xl font-bold" style={{ background: "rgba(255,107,157,0.1)", color: "#c0536a" }}>
+                    <span className="text-2xl">👫</span>
+                    <span className="text-base">Если будет +1 — предупреди в сообщении</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-        </div>
-
-        {/* Footer */}
-        <div
-          className="text-center mt-4 pb-8"
-          style={{
-            opacity: visible ? 1 : 0,
-            transition: "opacity 0.8s ease 0.7s",
-          }}
-        >
-          <p className="font-semibold text-lg" style={{ color: "#9B5DE5" }}>
-            Ждём вас с нетерпением! 🎈🎈🎈
-          </p>
         </div>
 
       </div>
