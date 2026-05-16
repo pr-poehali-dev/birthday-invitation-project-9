@@ -21,10 +21,7 @@ export default function Index() {
     <div
       className="min-h-screen font-nunito relative overflow-x-hidden"
       style={{
-        backgroundImage: `url(https://cdn.poehali.dev/projects/7e142d08-c8a0-4c74-b10d-4b2097a9ab24/bucket/0ad222c2-b598-4074-9b31-4063533aa8b9.jpg)`,
-        backgroundSize: "cover",
-        backgroundPosition: "center top",
-        backgroundAttachment: "fixed",
+        background: "#f5ede3",
       }}
     >
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-start px-4 pt-48 pb-12 gap-6">
@@ -116,10 +113,6 @@ export default function Index() {
                   <div className="flex items-center gap-3 px-4 py-3 rounded-xl font-bold" style={{ background: "rgba(255,140,66,0.1)", color: "#c05a00" }}>
                     <span className="text-2xl">🧖</span>
                     <span className="text-base">Будет бассейн и баня</span>
-                  </div>
-                  <div className="flex items-center gap-3 px-4 py-3 rounded-xl font-bold" style={{ background: "rgba(107,203,119,0.1)", color: "#3a9a47" }}>
-                    <span className="text-2xl">😄</span>
-                    <span className="text-base">И хорошее настроение!</span>
                   </div>
                   <div className="flex items-center gap-3 px-4 py-3 rounded-xl font-bold" style={{ background: "rgba(255,107,157,0.1)", color: "#c0536a" }}>
                     <span className="text-2xl">👫</span>
